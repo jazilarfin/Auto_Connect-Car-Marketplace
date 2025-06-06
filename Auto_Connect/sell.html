@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sell Your Vehicle</title>
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+        <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 20px;
+        }
+
+        .btn-primary {
+            border-radius: 20px;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+        }
+
+        #imagePreview {
+            width: 200px;
+            height: 125px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            /* Ensure that the image stays within the specified dimensions */
+        }
+
+        #imagePreview img {
+            max-width: 100%;
+            /* Set maximum width to fill the container */
+            max-height: 100%;
+            /* Set maximum height to fill the container */
+            display: block;
+            /* Ensure that the image behaves as a block element */
+            margin: auto;
+            /* Center the image horizontally within the container */
+        }
+    </style>
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Vehicle Sales & Purchase</a>
+                <button class="navbar-toggler" type="button"
+                    data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="list.php">Listings</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="sell.html">Sell Your
+                                Vehicle</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact
+                                Us</a>
+                        </li>
+
+                    </ul>
+
+                    <a href="index.php" class="btn btn-primary ml-2">Logout </a>
+                    <!-- Link to Register Page -->
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container mt-4">
+            <h1 class="text-center mb-4">Post Your Vehicle</h1>
+            <form id="sellForm" method="post" action="sell.php"
+                enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="make">Make</label>
+                            <input type="text" class="form-control" name="make"
+                                id="make" placeholder="Enter make">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" class="form-control" name="model"
+                                id="model" placeholder="Enter model">
+                        </div>
+                        <div class="form-group">
+                            <label for="variant">Variant</label>
+                            <input type="text" class="form-control"
+                                name="variant" id="variant"
+                                placeholder="Enter variant">
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <input type="text" class="form-control" name="year"
+                                id="year" placeholder="Select year">
+
+                        </div>
+                        <div class="form-group" style="margin-top: 35px;">
+                            <label for="bodytype">Body Type:</label>
+                            <select name="bodytype" id="bodytype"
+                                class="form-control">
+                                <option value="HatchBack">Hatch Back</option>
+                                <option value="Sedan" selected>Sedan</option>
+                                <option value="SUV">SUV</option>
+                                <option value="PickUpTruck">Pick Up
+                                    Truck</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-top: 35px;">
+                            <label for="mileage">Mileage</label>
+                            <input type="number" class="form-control"
+                                name="mileage" id="mileage"
+                                placeholder="Enter mileage">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control"
+                                name="price" id="price"
+                                placeholder="Enter price">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control"
+                                name="city" id="city"
+                                placeholder="Enter city">
+                        </div>
+                        <div>
+                            <label for="imageUpload">Choose an image:</label>
+                            <input type="file" id="imageUpload"
+                                name="imageUpload" accept="image/*"
+                                onchange="previewImage()">
+                            <div id="imagePreview"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" name="description"
+                                id="description" rows="4"
+                                placeholder="Enter description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer bg-light text-center py-4">
+            <div class="container">
+                <span class="text-muted">&copy; 2024 Vehicle Sales &
+                    Purchase</span>
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Datepicker -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script>
+        // Your JavaScript code for form validation and image preview goes here
+    </script>
+
+        <script>
+        function previewImage() {
+            var preview = document.querySelector('#imagePreview');
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                var img = document.createElement('img');
+                img.src = reader.result;
+                preview.innerHTML = '';
+                preview.appendChild(img);
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.innerHTML = '';
+            }
+        }
+        $(document).ready(function () {
+            // Initialize Bootstrap Datepicker
+            $('#year').datepicker({
+                format: "yyyy",
+                startView: "years",
+                minViewMode: "years",
+                autoclose: true,
+                endDate: "today"
+            });
+        });
+
+
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
+    </script>
+
+    </body>
+
+</html>
